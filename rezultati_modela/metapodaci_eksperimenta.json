@@ -1,0 +1,36 @@
+{
+  "ulazni_fajl": "stanovi_beograd_final.csv",
+  "broj_instanci": 694,
+  "broj_trening_instanci": 555,
+  "broj_test_instanci": 139,
+  "broj_ulaznih_atributa": 16,
+  "ulazni_atributi": [
+    "povrsina_m2",
+    "broj_soba",
+    "sprat",
+    "ukupno_spratova",
+    "broj_kupatila",
+    "opstina",
+    "naselje",
+    "grejanje",
+    "stanje",
+    "novogradnja_navedena",
+    "uknjizen_navedeno",
+    "lift_naveden",
+    "terasa_navedena",
+    "parking_garaza_navedeni",
+    "klima_navedena",
+    "podrum_naveden"
+  ],
+  "izbacene_kolone": [
+    "nadjidom_id",
+    "url",
+    "cena_po_m2"
+  ],
+  "ciljna_promenljiva": "cena_eur",
+  "test_size": 0.2,
+  "broj_cv_podela": 5,
+  "random_seed": 42,
+  "transformacija_cilja": "log1p/expm1 za LR, RF, XGBoost i CatBoost; standardizacija cilja za MLP",
+  "najbolji_model_prema_test_MAE": "XGBoost"
+}
