@@ -24,11 +24,11 @@ Podaci predstavljaju oglasne, a ne konačne kupoprodajne cene. Portal i struktur
 01_priprema_podataka.py       čišćenje i validacija podataka
 02_eksplorativna_analiza.py   tabele i grafikoni opisne analize
 03_treniranje_modela.py       obučavanje i poređenje pet modela
-04_analiza_gresaka.py         analiza cene po m², precenjivanja i potcenjivanja
+04_dodatna_analiza.py         MAPE po m² i analiza precenjenih/potcenjenih stanova
 data/                         sirovi i konačni skup podataka
 rezultati_eda/                rezultati eksplorativne analize
 rezultati_modela/             metrike, predikcije, grafikoni i model
-rezultati_analiza_gresaka/    detaljne tabele i grafikoni grešaka
+rezultati_dodatne_analize/    dodatne tabele i grafikoni analize grešaka
 ```
 
 ## Instalacija
@@ -50,10 +50,12 @@ python 00_prikupljanje_podataka.py --target-raw 700
 python 01_priprema_podataka.py
 python 02_eksplorativna_analiza.py
 python 03_treniranje_modela.py
-python 04_analiza_gresaka.py
+python 04_dodatna_analiza.py
 ```
 
 Pošto su prikupljeni podaci već priloženi, scraper nije potrebno ponovo pokretati da bi se ponovili čišćenje, analiza i modelovanje. Svaka skripta može se pokrenuti i zasebno.
+
+Skripta `04_dodatna_analiza.py` koristi već sačuvane predikcije i ne obučava modele ponovo. Ona izračunava MAPE i greške u EUR/m², kao i rezultate prema smeru greške, cenovnom kvartilu, površini i opštini.
 
 ## Eksperimentalna postavka
 
@@ -74,24 +76,6 @@ Najbolji rezultat prema MAE na izdvojenom test skupu ostvario je XGBoost:
 | Random Forest | 56.829 | 97.943 | 0,611 | 24,94 |
 
 Tačne vrednosti i rezultati unakrsne validacije nalaze se u fajlu `rezultati_modela/poredjenje_modela.csv`.
-
-## Dodatna analiza grešaka
-
-Za XGBoost model izračunate su stvarna i predviđena cena po m². MAPE cene po
-m² iznosi 17,21%, dok je prosečna apsolutna greška 528,11 €/m². MAPE ukupne
-cene i MAPE cene po m² jednaki su kada se obe cene dele istom površinom, zbog
-čega je dodatno prikazana greška izražena u €/m².
-
-Na test skupu model je precenio 81, a potcenio 58 stanova. Najjeftinijih 25%
-stanova prosečno je precenjeno za oko 14.275 €, dok je najskupljih 25%
-prosečno potcenjeno za oko 10.340 €. Stanovi površine od 80 do 120 m² imali su
-najveći MAPE među posmatranim površinskim grupama (23,18%) i model ih je
-precenio u 79,41% slučajeva. Rezultati po opštinama ukazuju i na to da opština
-nije dovoljno precizan opis lokacije, pa bi budući rad trebalo da uključi
-mikrolokaciju, koordinате i udaljenost od važnih sadržaja.
-
-Detaljne tabele i grafikoni nalaze se u folderu
-`rezultati_analiza_gresaka`.
 
 ## Metodološke napomene
 
