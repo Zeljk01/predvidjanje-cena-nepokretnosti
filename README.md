@@ -24,11 +24,11 @@ Podaci predstavljaju oglasne, a ne konačne kupoprodajne cene. Portal i struktur
 01_priprema_podataka.py       čišćenje i validacija podataka
 02_eksplorativna_analiza.py   tabele i grafikoni opisne analize
 03_treniranje_modela.py       obučavanje i poređenje pet modela
-04_dodatna_analiza.py         MAPE po m² i analiza precenjenih/potcenjenih stanova
+04_analiza_gresaka.py         MAPE po m² i analiza precenjenih/potcenjenih stanova
 data/                         sirovi i konačni skup podataka
 rezultati_eda/                rezultati eksplorativne analize
 rezultati_modela/             metrike, predikcije, grafikoni i model
-rezultati_dodatne_analize/    dodatne tabele i grafikoni analize grešaka
+rezultati_analiza_gresaka/    dodatne tabele i grafikoni analize grešaka
 ```
 
 ## Instalacija
@@ -50,12 +50,12 @@ python 00_prikupljanje_podataka.py --target-raw 700
 python 01_priprema_podataka.py
 python 02_eksplorativna_analiza.py
 python 03_treniranje_modela.py
-python 04_dodatna_analiza.py
+python 04_analiza_gresaka.py
 ```
 
 Pošto su prikupljeni podaci već priloženi, scraper nije potrebno ponovo pokretati da bi se ponovili čišćenje, analiza i modelovanje. Svaka skripta može se pokrenuti i zasebno.
 
-Skripta `04_dodatna_analiza.py` koristi već sačuvane predikcije i ne obučava modele ponovo. Ona izračunava MAPE i greške u EUR/m², kao i rezultate prema smeru greške, cenovnom kvartilu, površini i opštini.
+Skripta `04_analiza_gresaka.py` koristi već sačuvane predikcije i ne obučava modele ponovo. Ona izračunava MAPE i greške u EUR/m², kao i rezultate prema smeru greške, cenovnom kvartilu, površini i opštini.
 
 ## Eksperimentalna postavka
 
